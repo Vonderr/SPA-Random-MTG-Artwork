@@ -1,0 +1,102 @@
+.container {
+    width: 1000px;
+    margin: auto;
+}
+
+.random-card {
+    margin-left: 36.5%;
+    padding: 10px;
+    border: 2px solid rgb(0, 0, 0);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.5s;
+    background-color: #f26306;
+    background-size: 200% auto;
+    color: white;
+    background-image: linear-gradient(to top, #febc51 0%, #ff9236 35%, #f26306 90%);
+}
+
+body {
+    background-image: url('/img/bolas_bg.jpg');
+    background-color: hsla(0,0%,100%,0.70);
+}
+
+#title {
+    vertical-align: middle;
+    text-align: center;
+}
+
+#cardDisplay {
+    border: 25px solid black;
+    padding: 0.5em;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto;
+    margin-top: 56px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    box-shadow: -8px 9px 16px -3px #000000c4;
+    background-color: #bbb;
+}
+
+.name
+.bottom-text {
+    border-bottom: 4px solid #a9a9a9;
+    border-left: 2px solid #a9a9a9;
+    border-top: 1px solid #fff;
+    border-right: 1px solid #fff;
+    padding: 10px
+}
+
+.name,
+.bottom-text,
+.image-frame {
+/*     box-shadow: 
+    0 0 0 2px #171314,
+    0 0 0 5px #26714A,
+    -3px 3px 2px 5px #171314; */
+    margin-bottom: 7px;
+}
+
+.name,
+.bottom-text {
+    background: 
+    linear-gradient( 0deg, rgba(201, 216, 201, .3), rgba(201, 216, 209, .3) ), 
+    url(https://image.ibb.co/jKByZn/tile_bg_1.jpg); 
+    display: flex;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 8px 0 8px 10px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 18px/40px;
+}
+
+.image-frame {
+    height: 50%; /* make it fit in the card */
+    margin: 0 11px; /* align it vertically */
+}
+
+.bottom-text {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 15px 0 15px; 
+}
+
+.fbi-left {
+    flex: 1;
+    margin-bottom: 1px;
+}
+.fbi-right {
+    flex: 1;
+    text-align: right;
+}
+
+.fbi-left,
+.fbi-right {
+    position: relative;
+    top: 6px;
+}
