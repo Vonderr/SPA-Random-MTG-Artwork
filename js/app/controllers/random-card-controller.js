@@ -5,16 +5,19 @@ define(['views/random-card-view', 'services/scryfall-service'], function(
     var externals = {};
     var internals = {};
 
-    externals.start = function() {                      //controller init
+    //controller init
+    externals.start = function() {                      
         internals.bindEventHandlers();
         randomView.render();
     };
 
-    internals.bindEventHandlers = function() {          //bind viewer to this controller
+    //bind viewer to this controller
+    internals.bindEventHandlers = function() {          
         randomView.bind('random-card', internals.randomHandler);
     };
 
-    internals.randomHandler = function() {            //rng > fetch #RNG film > update view with said film
+    //execute api request to service and provide view with the results
+    internals.randomHandler = function() {            
         scryfallService.randomCard().then(randomView.render);
     };
 

@@ -6,7 +6,7 @@ define(function() {
     var externals = {}; // module external api
 
     internals.routes = {
-        // ChangeMe route
+        // app routes
         search: {
             hash: '#search-card', // hash
             controller: 'search-card-controller' // controller
@@ -20,6 +20,10 @@ define(function() {
     internals.defaultRoute = 'random';
     internals.currentHash = ''; // required to track hash changes
 
+    /**
+     * Loads controller for respective hash, it exists
+     * otherwise controller of default hash
+     */
     internals.hashCheck = function() {
         if (window.location.hash === internals.currentHash) {
             return;
@@ -37,6 +41,12 @@ define(function() {
         internals.loadController(internals.routes[routeName].controller);
     };
 
+    /**
+     * attempts to start given controller
+     * if error occurs, go to default route
+     * 
+     * @param {*} controllerName the controller to load
+     */
     internals.loadController = function(controllerName) {
         internals.currentHash = window.location.hash;
         require(['controllers/' + controllerName], function(controller) {
@@ -49,6 +59,11 @@ define(function() {
         });
     };
 
+    /**
+     * router init
+     * set window hash to default,
+     * then start hash check loop
+     */
     externals.start = function() {
         window.location.hash =
             window.location.hash || internals.routes[internals.defaultRoute].hash;

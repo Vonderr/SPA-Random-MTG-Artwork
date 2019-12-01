@@ -1,10 +1,18 @@
 define(function () {
-    var internals = {}; // internal state
-    var externals = {}; // external api
+    // internal state
+    var internals = {   
+        api : 'https://api.scryfall.com/cards/search?q=',
+        random = 'https://api.scryfall.com/cards/random',
+    }; 
+    // external api
+    var externals = {}; 
 
-    internals.api = 'https://api.scryfall.com/cards/search?q=';
-    internals.random = 'https://api.scryfall.com/cards/random';
-
+    /**
+     * Fetch from API
+     * 
+     * @param {String} url address to perform request
+     * @returns {Promise} Json of API response
+     */
     internals.fetch = function (url) {
         return new Promise(function (resolve, reject) {
             $.ajax({
@@ -15,8 +23,13 @@ define(function () {
         });
     }
 
+    /**
+     * Process API response
+     * 
+     * @param {Promise} results API response
+     * @returns {Array} DTO of response
+     */
     internals.getCards = function (results) {
-        console.log(results);
         return results.data.map(function (card) {
             return {
                 name: card.name,
@@ -24,11 +37,16 @@ define(function () {
                 set: card.set_name,
                 artist: card.artist
             };
-        }).shift();
+        });
     }
 
+    /**
+     * Process API response
+     * 
+     * @param {Promise} results API response
+     * @returns {Array} DTO of response
+     */
     internals.getRandomCard = function (results) {
-        
         return {
             name: results.name,
             imgUrl: results.image_uris.art_crop,
@@ -39,22 +57,40 @@ define(function () {
         };
     }
 
+    /**
+     * Break glass in case of fire
+     */
     internals.handleErrors = function () {
         return {
             name: '404 Elk',
-            imgUrl: 'img/404_elk.png',
+            imgUrl: 'img/404.png',
             set: 'HTTP Masters 25',
             artist: 'Annonymous'
         }
     }
 
+    /**
+     * Expose Fetch Random Card behaviour
+     * 
+     * Fetches Random Card from API
+     * Processes reponse into DTO and returns it
+     * Handle Errors if any occur
+     */
     externals.randomCard = function () {
-
         return internals.fetch(internals.random)
             .then(internals.getRandomCard)
             .catch(internals.handleErrors);
     }
 
+    /**
+     * Expose Search Card behaviour
+     * 
+     * Fetches dataset correspondent to search query from API
+     * Processes reponse into DTO and returns it
+     * Handle Errors if any occur
+     * 
+     * @param {String} event search query parameters
+     */
     externals.searchCard = function (event) {
         var search = event.target.value;
 

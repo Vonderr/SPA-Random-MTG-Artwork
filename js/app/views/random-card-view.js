@@ -4,6 +4,7 @@ define(function() {
         elements: {}
     };
 
+    // Card Color map
     var externals = {};
     internals.elements.cardColors = {
         "": '#b3c4cb',
@@ -15,10 +16,12 @@ define(function() {
         "M": '#f5ce3a'
     }
 
-    internals.createButton = function() {
+    //Random Artwork Button html element
+    internals.createRandomButton = function() {
         return '<button class="random-card">Click Me for Random MTG Artwork</button>';
     };
 
+    //Create Card Display div and elements
     internals.createCardDisplay = function(card) {
         return (
             '<div id="cardDisplay">' +
@@ -38,11 +41,12 @@ define(function() {
         );
     };
 
+    // Update Card Display with new info
     internals.renderCard = function(card) {
         if (internals.elements.cardDisplay) {
-            //internals.elements.cardDisplay.empty();
             $('div').remove('#cardDisplay');
         }
+
 
         var renderColor = (card.colorIdentity in internals.elements.cardColors) ?
                             internals.elements.cardColors[card.colorIdentity] :
@@ -50,32 +54,34 @@ define(function() {
 
         internals.elements.cardDisplay = $(internals.createCardDisplay(card));
         internals.elements.card.append(internals.elements.cardDisplay);
+
         //$('#cardDisplay').css('background-color', );    TODO background color
         $('.bottom-text').css('background-image', 'url(https://img.scryfall.com/sets/' + card.setAbrev + '.svg');
         $('.border').css('box-shadow', '0 0 0 2px #171314, 0 0 0 5px ' + renderColor + ', -3px 3px 2px 5px #171314');
     };
 
+    //Create and append buttons
     internals.renderButton = function() {
         if (internals.elements.button) {
             return;
         }
 
-        internals.elements.button = $(internals.createButton());
+        internals.elements.button = $(internals.createRandombButton());
         internals.elements.button.click(internals.handlers['random-card']);
         internals.elements.app.append(internals.elements.button);
     };
 
+    //Wire this view to its controller
     externals.bind = function(event, handler) {
         internals.handlers[event] = handler;
     };
 
+    //Trigger update
     externals.render = function(card) {
         internals.elements.card = $('#card')
         internals.elements.app = $('#app');
         internals.renderButton();
 
-        console.log(card);
-        
         if (card) {
             internals.renderCard(card);
         }
