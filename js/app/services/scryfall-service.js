@@ -2,7 +2,7 @@ define(function () {
     // internal state
     var internals = {   
         api : 'https://api.scryfall.com/cards/search?q=',
-        random = 'https://api.scryfall.com/cards/random',
+        random : 'https://api.scryfall.com/cards/random',
     }; 
     // external api
     var externals = {}; 
@@ -62,7 +62,7 @@ define(function () {
      */
     internals.handleErrors = function () {
         return {
-            name: '404 Elk',
+            name: '404',
             imgUrl: 'img/404.png',
             set: 'HTTP Masters 25',
             artist: 'Annonymous'

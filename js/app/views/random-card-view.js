@@ -66,7 +66,7 @@ define(function() {
             return;
         }
 
-        internals.elements.button = $(internals.createRandombButton());
+        internals.elements.button = $(internals.createRandomButton());
         internals.elements.button.click(internals.handlers['random-card']);
         internals.elements.app.append(internals.elements.button);
     };
