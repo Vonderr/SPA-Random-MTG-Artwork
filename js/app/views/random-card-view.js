@@ -51,7 +51,7 @@ define(function() {
         internals.elements.cardDisplay = $(internals.createCardDisplay(card));
         internals.elements.card.append(internals.elements.cardDisplay);
         //$('#cardDisplay').css('background-color', );    TODO background color
-        $('.bottom-text').css('background-image', 'url(' + card.setEmblem + ')');
+        $('.bottom-text').css('background-image', 'url(https://img.scryfall.com/sets/' + card.setAbrev + '.svg');
         $('.border').css('box-shadow', '0 0 0 2px #171314, 0 0 0 5px ' + renderColor + ', -3px 3px 2px 5px #171314');
     };
 
@@ -74,6 +74,8 @@ define(function() {
         internals.elements.app = $('#app');
         internals.renderButton();
 
+        console.log(card);
+        
         if (card) {
             internals.renderCard(card);
         }

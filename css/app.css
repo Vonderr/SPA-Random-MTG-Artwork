@@ -18,8 +18,11 @@
 }
 
 body {
-    background-image: url('/img/bolas_bg.jpg');
-    background-color: hsla(0,0%,100%,0.70);
+    background:
+    linear-gradient( 0deg, rgba(201, 216, 201, .3), rgba(201, 216, 209, .3) ), 
+    url('/img/bolas_bg.jpg');  
+    /*background-image: url('/img/bolas_bg.jpg');
+    background-color: hsla(0,0%,100%,0.70);*/
 }
 
 #title {
@@ -59,8 +62,7 @@ body {
     margin-bottom: 7px;
 }
 
-.name,
-.bottom-text {
+.name {
     background: 
     linear-gradient( 0deg, rgba(201, 216, 201, .3), rgba(201, 216, 209, .3) ), 
     url(https://image.ibb.co/jKByZn/tile_bg_1.jpg); 
@@ -83,7 +85,12 @@ body {
     padding: 5px;
     display: flex;
     justify-content: space-between;
-    margin: 5px 15px 0 15px; 
+    margin: 5px 15px 0 15px;
+    background-size: 85px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 80px;
+    border-radius: 18px/40px;
 }
 
 .fbi-left {

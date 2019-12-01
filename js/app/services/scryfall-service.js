@@ -28,13 +28,14 @@ define(function () {
     }
 
     internals.getRandomCard = function (results) {
+        
         return {
             name: results.name,
             imgUrl: results.image_uris.art_crop,
             set: results.set_name,
             artist: results.artist,
             colorIdentity: results.color_identity,
-            setEmblem: internals.fetch(results.set_uri).icon_svg_uri
+            setAbrev: results.set
         };
     }
 
