@@ -17,7 +17,7 @@ define(function() {
         }
     };
 
-    internals.defaultRoute = 'search-card';
+    internals.defaultRoute = 'random';
     internals.currentHash = ''; // required to track hash changes
 
     internals.hashCheck = function() {
